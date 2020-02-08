@@ -10,5 +10,13 @@
     "tslint.json": "*",
     "nx.json": "*"
   },
-  "projects": {}
+  "projects": {
+    "nursery-match-creator": {
+      "tags": []
+    },
+    "nursery-match-creator-e2e": {
+      "tags": [],
+      "implicitDependencies": ["nursery-match-creator"]
+    }
+  }
 }

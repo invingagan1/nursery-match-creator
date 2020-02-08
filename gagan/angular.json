@@ -1,7 +1,152 @@
 {
   "version": 1,
-  "projects": {},
+  "projects": {
+    "nursery-match-creator": {
+      "projectType": "application",
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "apps/nursery-match-creator",
+      "sourceRoot": "apps/nursery-match-creator/src",
+      "prefix": "gagan",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/nursery-match-creator",
+            "index": "apps/nursery-match-creator/src/index.html",
+            "main": "apps/nursery-match-creator/src/main.ts",
+            "polyfills": "apps/nursery-match-creator/src/polyfills.ts",
+            "tsConfig": "apps/nursery-match-creator/tsconfig.app.json",
+            "aot": false,
+            "assets": [
+              "apps/nursery-match-creator/src/favicon.ico",
+              "apps/nursery-match-creator/src/assets"
+            ],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/purple-green.css",
+              "apps/nursery-match-creator/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/nursery-match-creator/src/environments/environment.ts",
+                  "with": "apps/nursery-match-creator/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "nursery-match-creator:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "nursery-match-creator:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "nursery-match-creator:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/nursery-match-creator/tsconfig.app.json",
+              "apps/nursery-match-creator/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/nursery-match-creator/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/nursery-match-creator/jest.config.js",
+            "tsConfig": "apps/nursery-match-creator/tsconfig.spec.json",
+            "setupFile": "apps/nursery-match-creator/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "nursery-match-creator-e2e": {
+      "root": "apps/nursery-match-creator-e2e",
+      "sourceRoot": "apps/nursery-match-creator-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/nursery-match-creator-e2e/cypress.json",
+            "tsConfig": "apps/nursery-match-creator-e2e/tsconfig.e2e.json",
+            "devServerTarget": "nursery-match-creator:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "nursery-match-creator:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/nursery-match-creator-e2e/tsconfig.e2e.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/nursery-match-creator-e2e/**"
+            ]
+          }
+        }
+      }
+    }
+  },
   "cli": {
-    "defaultCollection": "@nrwl/workspace"
-  }
+    "defaultCollection": "@nrwl/angular"
+  },
+  "schematics": {
+    "@nrwl/angular:application": {
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "unitTestRunner": "jest"
+    }
+  },
+  "defaultProject": "nursery-match-creator"
 }
