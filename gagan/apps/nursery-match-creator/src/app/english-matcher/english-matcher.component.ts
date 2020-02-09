@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CapitalLetters, Letters, SmallLetters } from '../core/enum/index';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'gagan-english-matcher',
@@ -11,11 +12,12 @@ export class EnglishMatcherComponent implements OnInit {
   public letters = Letters;
   public smallLetters = SmallLetters;
   public capitalLetters = CapitalLetters;
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
   public createWorkSheet(leftSide, rightSide, from, to) {
     console.log(leftSide, rightSide, from, to);
+    this.router.navigate(['work-sheet']);
   }
 }
