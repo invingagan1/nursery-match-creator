@@ -18,6 +18,12 @@ export class EnglishMatcherComponent implements OnInit {
   }
   public createWorkSheet(leftSide, rightSide, from, to) {
     console.log(leftSide, rightSide, from, to);
-    this.router.navigate(['work-sheet']);
+    this.router.navigate(['/work-sheet'], {
+      queryParams: {
+        leftSide,rightSide,from,to
+      },
+      preserveQueryParams: true,
+      queryParamsHandling: "merge"
+    });
   }
 }

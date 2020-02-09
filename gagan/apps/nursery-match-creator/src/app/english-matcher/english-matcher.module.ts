@@ -11,7 +11,7 @@ const routes: Routes = [
     component: EnglishMatcherComponent
   },
   {
-    path: "/work-sheet",
+    path: "work-sheet",
     component: EnglishMatchWorkSheetComponent
   }
 ]

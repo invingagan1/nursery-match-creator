@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Route } from '@angular/compiler/src/core';
 
 @Component({
   selector: 'gagan-english-match-work-sheet',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EnglishMatchWorkSheetComponent implements OnInit {
 
-  constructor() { }
+  constructor(private route: ActivatedRoute) {
+
+  }
 
   ngOnInit() {
+    this.route.queryParamMap.subscribe(params => {
+      console.log(params);
+    });
   }
 
 }
