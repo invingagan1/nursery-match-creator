@@ -1,0 +1,45 @@
+<h1 mat-headline>English letter matching work sheet</h1>
+<div fxLayout="column">
+  <div >
+    <h3 mat-subheader>Select combination</h3>
+    <div fxLayout="row" fxLayoutAlign="space-between center">
+      <mat-form-field appearance="outline">
+        <mat-label>Left side</mat-label>
+        <mat-select #left>
+          <mat-option [value]='letter.key' *ngFor="let letter of letters| keyvalue">
+            {{letter.value}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Right side</mat-label>
+        <mat-select #right>
+          <mat-option [value]='letter.key' *ngFor="let letter of letters| keyvalue">
+            {{letter.value}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <h3 mat-subheader>Select range</h3>
+    <div fxLayout="row" fxLayoutAlign="space-between center">
+      <mat-form-field appearance="outline">
+        <mat-label>From</mat-label>
+        <mat-select #from>
+          <mat-option [value]='letter.key' *ngFor="let letter of capitalLetters| keyvalue">
+            {{letter.value}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>To</mat-label>
+        <mat-select #to>
+          <mat-option [value]='letter.key' *ngFor="let letter of capitalLetters| keyvalue">
+            {{letter.value}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <button mat-raised-button color="primary"
+      (click)="createWorkSheet(left.value, right.value, from.value, to.value)">Create work sheet</button>
+  </div>
+</div>
