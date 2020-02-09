@@ -1,1 +1,9 @@
-<p>english-match-work-sheet works!</p>
+<h3 mat-heading>Match the following</h3>
+<mat-list>
+  <mat-list-item *ngFor="let item of items">
+    <div mat-line fxLayout="row" fxLayoutAlign="space-between center" >
+      <span>{{item.left}}</span>
+      <span>{{item.right}}</span>
+    </div>
+  </mat-list-item>
+</mat-list>
